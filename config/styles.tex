@@ -1,0 +1,42 @@
+% ==================================================
+% Heading Styles and Numbering
+% ==================================================
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\titleformat{\chapter}[block]
+  {\thesisheadingfont}
+  {\filcenter BAB \thechapter\quad}
+  {0pt}
+  {\filcenter}
+
+\titleformat{\section}[block]
+  {\thesisheadingfont}
+  {\thesection\quad}
+  {0pt}
+  {\raggedright\aftergroup\justifying}
+
+% ==================================================
+% Front Matter Labels
+% ==================================================
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftsecfont}{}
+
+% ==================================================
+% Bibliography Heading
+% ==================================================
+\defbibheading{dapusstyle}{%
+  \newpage
+  \vspace*{0pt}
+  \begin{center}
+    \thesisheadingfont DAFTAR PUSTAKA
+  \end{center}
+  \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+  \vspace{10pt}
+}

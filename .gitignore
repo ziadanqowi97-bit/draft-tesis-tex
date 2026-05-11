@@ -1,0 +1,13 @@
+*.aux
+*.bbl*
+*.bcf*
+*.bkg
+*.blg
+*.fdb*
+*.fls
+*.out
+*.log
+*.lot
+*.run*
+*.sync*
+*.toc

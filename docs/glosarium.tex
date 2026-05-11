@@ -1,0 +1,19 @@
+% Pastikan Anda menambahkan baris berikut di bagian preamble (sebelum \begin{document}):
+% \usepackage{longtable}
+
+% ========================
+% DAFTAR SINGKATAN DAN ISTILAH
+% ========================
+\chapter*{DAFTAR SINGKATAN DAN ISTILAH}
+\addcontentsline{toc}{chapter}{DAFTAR SINGKATAN DAN ISTILAH}
+
+\vspace{0.5cm}
+
+% Menggunakan 3 kolom: Istilah/Singkatan, Kepanjangan (Asing), dan Penjelasan
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{} L{2.4cm} L{3.0cm} L{7.4cm} @{}}
+\textbf{Istilah / Singkatan} & \textbf{Kepanjangan / Asing} & \textbf{Penjelasan} \\[2ex]
+\endhead % Memastikan header diulang ke halaman berikutnya
+
+
+\end{longtable}
