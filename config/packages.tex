@@ -32,7 +32,73 @@
 % Links and bibliography
 \usepackage{xurl}
 \usepackage{hyperref}
+
+\usepackage[indonesian]{babel}
+\usepackage{csquotes}
+
 \usepackage[
     backend=biber,
-    style=ieee
+    style=authoryear,
+    sorting=nyt,
+    language=indonesian,
+    maxcitenames=2,
+    maxbibnames=99,
+    giveninits=true,
+    uniquename=false,
+    doi=false,
+    url=false,
+    isbn=false,
+    eprint=false
 ]{biblatex}
+
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+
+% Hilangkan bulan/tanggal akses
+\AtEveryBibitem{%
+  \clearfield{month}
+  \clearfield{day}
+  \clearfield{urldate}
+  \clearfield{langid}
+  \clearlist{language}
+}
+
+% Nama penulis
+\DeclareNameAlias{author}{family-given}
+
+% Pemisah penulis
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+\DeclareDelimFormat{finalnamedelim}{\addspace dan\space}
+
+% Tahun pakai kurung
+\renewbibmacro*{date+extradate}{%
+  \printtext[parens]{%
+    \printfield{year}%
+    \printfield{extradate}}}
+
+% Judul artikel tanpa kutip
+\DeclareFieldFormat[article]{title}{#1}
+
+% Nama jurnal italic
+\DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1}}
+
+% Volume bold
+\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+
+% Nomor halaman
+\DeclareFieldFormat{pages}{#1}
+
+% Hilangkan "In:"
+\renewbibmacro{in:}{}
+
+% Bahasa Indonesia
+\DefineBibliographyStrings{indonesian}{
+  andothers = {dkk\adddot},
+  and = {dan},
+  references = {Daftar Pustaka},
+  page = {hlm\adddot},
+  pages = {hlm\adddot}
+}
+
+\setlength{\bibhang}{1.5em}
+
+\addbibresource{references/reference.bib}
