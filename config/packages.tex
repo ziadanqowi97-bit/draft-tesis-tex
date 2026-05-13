@@ -90,6 +90,24 @@
 % Hilangkan "In:"
 \renewbibmacro{in:}{}
 
+% Style dari website
+\DeclareBibliographyDriver{online}{%
+  \printfield{title}%
+  \addcomma\space
+  diperoleh melalui situs internet:\space
+  \printfield{url}%
+  \addperiod\space
+  Diunduh pada tanggal\space
+  \printurldate
+  \finentry
+}
+
+\DeclareFieldFormat{urldate}{%
+  \thefield{urlday}~%
+  \ifcase\thefield{urlmonth}\or Januari\or Februari\or Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
+  \space\thefield{urlyear}%
+}
+
 % Bahasa Indonesia
 \DefineBibliographyStrings{indonesian}{
   andothers = {dkk\adddot},
