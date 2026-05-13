@@ -91,11 +91,13 @@
 \renewbibmacro{in:}{}
 
 % Style dari website
+\DeclareFieldFormat{rawurl}{\url{#1}}
+
 \DeclareBibliographyDriver{online}{%
   \printfield{title}%
   \addcomma\space
   diperoleh melalui situs internet:\space
-  \printfield{url}%
+  \printfield[rawurl]{url}%
   \addperiod\space
   Diunduh pada tanggal\space
   \printurldate
