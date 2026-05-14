@@ -1,3 +1,19 @@
 \section{Batasan Masalah}
 
 Untuk menjaga fokus dan kedalaman, penelitian ini dibatasi oleh beberapa hal berikut:
+
+\begin{enumerate}
+    \item Penelitian difokuskan pada aspek otorisasi dalam sistem kontrol akses IoT, sehingga tidak membahas autentikasi, manajemen identitas penuh, enkripsi komunikasi, maupun integrasi dengan \textit{identity provider} eksternal.
+    \item Model kontrol akses yang digunakan dibatasi pada ABAC. Model lain seperti RBAC, DAC, MAC, UCON, atau CapBAC hanya dibahas sebagai pembanding konseptual.
+    \item Arsitektur penelitian dibatasi pada ABAC berbasis \textit{edge}, dengan \textit{gateway} sebagai tempat evaluasi keputusan akses dan pengelolaan \textit{cache} atribut.
+    \item Parameter yang dioptimasi dibatasi pada \textit{cacheable attribute}, TTL per atribut, dan ukuran \textit{cache} lokal pada \textit{gateway}. Penelitian ini tidak mengoptimalkan struktur kebijakan ABAC secara penuh.
+    \item Optimasi yang dilakukan tidak mengubah semantik kebijakan ABAC. Seluruh atribut tetap dievaluasi dalam proses pengambilan keputusan akses, sedangkan optimasi hanya menentukan atribut mana yang diperbolehkan untuk di-\textit{cache}.
+    \item Atribut yang digunakan dalam eksperimen dibatasi pada atribut simulatif, yaitu \textit{trust, anomaly, network condition, role, firmware status, critical request, PIP availability,} dan \textit{revocation event}.
+    \item Pengujian dilakukan menggunakan \textit{workload} sintetis dengan empat skenario dinamika, yaitu \textit{low dynamic, medium dynamic, high dynamic,} dan \textit{very dynamic}. Penelitian ini tidak menggunakan trafik IoT nyata.
+    \item Lingkungan eksperimen dilakukan melalui simulasi berbasis iFogSim2 dan Java, bukan \textit{deployment} langsung pada perangkat IoT fisik.
+    \item Metrik evaluasi performa dibatasi pada \textit{average latency, p95 latency, PIP calls, cache hits, CPU time,} dan \textit{memory usage}.
+    \item Metrik kualitas keputusan akses dibatasi pada \textit{false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate}.
+    \item Algoritma yang dikaji adalah GWO. Algoritma lain seperti \textit{random search} digunakan sebagai pembanding, bukan fokus utama penelitian.
+    \item \textit{Threat model} penelitian ini dibatasi pada risiko \textit{stale attribute, revocation delay}, dan \textit{PIP unavailability}. Serangan seperti \textit{physical tampering, side-channel, malware gateway, man-in-the-middle,} dan kompromi penuh terhadap \textit{cloud} tidak dibahas secara mendalam.
+    \item Hasil penelitian bersifat evaluatif dalam konteks simulasi, sehingga validasi pada perangkat fisik atau \textit{testbed} IoT nyata menjadi bagian dari pengembangan penelitian selanjutnya.
+\end{enumerate}

@@ -1,2 +1,13 @@
 \section{Kontribusi Penelitian}
 
+Penelitian ini memberikan kontribusi sebagai berikut:
+
+\begin{enumerate}
+    \item Merancang mekanisme ABAC berbasis \textit{edge} dengan \textit{cache} atribut lokal pada \textit{gateway} untuk mengurangi latensi dan \textit{PIP calls} pada lingkungan IoT dinamis.
+    \item Mengusulkan strategi \textit{cacheable attribute} yang tetap mempertahankan semantik kebijakan ABAC sehingga optimasi tidak menghapus atribut dari proses evaluasi akses.
+    \item Memformulasikan pengelolaan \textit{attribute freshness} sebagai masalah optimasi dengan variable keputusan berupa \textit{cacheable attribute}, TTL per atribut, dan ukuran \textit{cache} lokal.
+    \item Menerapkan \textit{Grey Wolf Optimization} untuk emcari konfigurasi \textit{cache} dan \textit{freshness} yang mampu menyeimbangkan performa dan kualitas keputusan otorisasi.
+    \item Mengembangkan fungsi \textit{fitness} yang mempertimbangkan latensi, \textit{PIP calls, cache hits, false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate}.
+    \item Mengevaluasi mekanisme yang diusulkan terhadap beberapa \textit{baseline}, yaitu \textit{cloud-only ABAC, edge fresh ABAC, static cache ABAC, adaptive TTL ABAC, random search,} dan \textit{GWO-optimized ABAC}.
+    \item Menguji mekanisme pada skenario \textit{workload} dinamis dan \textit{threat-aware} dengan mempertimbangkan \textit{stale attribute, PIP unavailability,} dan \textit{revocation event}.
+\end{enumerate}

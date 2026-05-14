@@ -1,3 +1,33 @@
 \section{Metodologi Penelitian}
 
-Untuk mencapai tujuan yang telah ditetapkan, penelitian ini menggunakan
+Penelitian ini menggunakan pendekatan \textit{Design Science Research} (DSR) yang diperkuat dengan \textit{simulation-based experimental evaluation.} Pendekatan DSR digunakan karena penelitian ini tidak hanya menganalisis fenomena keamanan pada ABAC berbasis \textit{edge}, tetapi juga merancang artefak berupa mekanisme \textit{GWO-optimized ABAC} untuk mengoptimalkan \textit{cache} atribut dan \textit{attribute freshness} pada lingkungan IoT dinamis.
+
+Pada tahap pertama, penelitian melakukan identifikasi masalah dan motivasi berdasarkan kajian literatur mengenai kontrol akses IoT, ABAC, \textit{edge/fog computing, attribute freshness, stale attribute,} dan optimasi metaheuristik. Tahap ini menegaskan bahwa masalah utama dalam penerapan ABAC pada IoT tidak hanya terletak pada kemampuan model dalam menyediakan kontrol akses yang \textit{fine-grained} dan \textit{context-aware}, tetapi juga pada biaya pengambilan atribut mutakhir dari PIP atau \textit{cloud} serta risiko penggunaan atribut usang ketika atribut disimpan secara lokal di \textit{edge}.
+
+Pada tahap kedua, penelitian memformalkan masalah ke dalam model konseptual. Variabel konteks yang digunakan meliputi dinamika \textit{workload}, perubahan nilai atribut, status konektivitas PIP, dan kejadian \textit{revocation}. Variabel keputusan meliputi \textit{cacheable attribute}, nilai TTl per atribut, dan ukuran \textit{cache} lokal pada \textit{gateway edge}. variabel \textit{outcome} meliputi \textit{average latency, p95 latency}, jumlah \textit{PIP calls, cache hits, false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate}.
+
+Pada tahap ketiga, penelitian merancang mekanisme \textit{GWO-optimized ABAC}. Dalam mekanisme ini, seluruh atribut tetap digunakan dalam proses evaluasi kebijakan sehingga semantik kebijakan tidak diubah. Optimasi hanya dilakukan pada strategi pengelolaan atribut, yaitu menentukan atribut mana yang boleh di-\textit{cache}, berapa nilai TTL masing-masing atribut, dan berapa ukuran \textit{cache} lokal pada \textit{gateway}. Fungsi \textit{fitness} dirancang untuk emnyeimbangkan efisiensi performa dan kualitas keputusan otorisasi dengan memberi penalti terhadap risiko keamanan seperti \textit{false allow, false deny,} dan penggunaan \textit{stale attribute}.
+
+Pada tahap keempat, penelitian mengimplementasikan model eksperimen menggunakan Java dan representasi topologi \textit{edge/fog} berbasis iFogSim2. Topologi yang digunakan terdiri dari \textit{cloud, proxy, gateway edge,} dan \textit{endpoint} IoT. \textit{Gateway edge} berperan sebagai lokasi evaluasi keputusan akses dan pengelolaan \textit{cache} atribut. \textit{Workload} dibangkitkan secara sintesis dengan emapt tingkat dinamika, yaitu:
+
+\begin{enumerate}
+    \item \textit{Low dynamic workload};
+    \item \textit{Medium dynamic worklaod};
+    \item \textit{High dynamic workload}; dan
+    \item \textit{Very dynamic workload}.
+\end{enumerate}
+
+Pada tahap kelima, penelitian menjalankan eksperimen komparatif terhadap beberapa konfigurasi, yaitu:
+
+\begin{enumerate}
+    \item \textit{cloud-only ABAC}, yaitu evaluasi akses bergantung pada atribut dari \textit{cloud}/PIP pusat;
+    \item \textit{edge fresh ABAC}, yaitu evaluasi dilakukan di \textit{edge} tetapi atribut selalu diambil secara mutakhir;
+    \item \textit{static cache ABAC}, yaitu \textit{cache} atribut menggunakan TTL tetap;
+    \item \textit{adaptive TTL ABAC}, yaitu TTL disesuaikan menggunakan aturan heuristik manual;
+    \item \textit{random search ABAC}, yaitu konfigurasi \textit{cache} dicari secara acak sebagai \textit{baseline} optimasi;
+    \item \textit{GWO-optimized ABAC}, yaitu konfigurasi \textit{cache} dioptimasi menggunakan GWO sebagai model yang diusulkan.
+\end{enumerate}
+
+Pada tahap keenam, penelitian membagi \textit{workload} ke dalam data optimasi dan data pengujian. Data optimasi digunakan oleh GWO dan \textit{random search} untuk mencari konfigurasi \textit{cacheable attribute}, TTL per atribut, dan ukuran \textit{cache}. Data pengujian digunakan untuk mengevaluasi performa akhir setiap metode agar hasil tidak bias terhadap data yang digunakan selama proses optimasi.
+
+Pada tahap ketujuh, hasil eksperimen dianalisis untuk menjawab apakah \textit{GWO-optimized ABAC} mampu memberikan keseimbangan yang lebih baik antara efisiensi evaluasi akses, \textit{attribute freshness}, dan kualitas keputusan otorisasi dibandingkan pendekatan lain. Analisis dilakukan dengan membandingkan metrik performa dan keamanan antar skenario, khususnya \textit{average latency, p95 latency, PIP calls, cache hits, false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate}. Dengan demikian, evaluasi tidak hanya menilai apakah mekanisme yang diusulkan lebih cepat, tetapi juga apakah keputusan akses yang dihasilkan tetap aman dan reliabel pada lingkungan IoT \textit{edge} yang dinamis.

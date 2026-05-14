@@ -1,3 +1,12 @@
 \section{Tujuan Penelitian}
 
 Adapun tujuan yang ingin dicapai melalui penelitian ini adalah:
+
+\begin{enumerate}
+    \item Merancang mekanisme ABAC berbasis \textit{edge} untuk mendukung kontrol akses \textit{fine-grained} dan \textit{context-aware} pada lingkungan IoT dinamis.
+    \item Menerapkan \textit{cache} atribut lokal pada \textit{gateway edge} untuk mengurangi latensi dan jumlah \textit{PIP calls} tanpa menghilangkan atribut dari evaluasi kebijakan ABAC.
+    \item Memformulasikan optimasi \textit{cache} atribut dan \textit{freshness} melalui variabel \textit{cacheable attribute}, TTL per atribut, dan ukuran \textit{cache}.
+    \item Menerapkan \textit{Grey Wolf Optimization} untuk mencari konfigurasi \textit{cache} atribut dan \textit{freshness} yang optimal pada ABAC berbasis \textit{edge}.
+    \item Mengevaluasi performa mekanisme yang diusulkan dibandingkan dengan \textit{cloud-only ABAC, edge fresh ABAC, static cache, adaptive TTL,} dan \textit{random search}.
+    \item Menganalisis kualitas keputusan otorisasi berdasarkan \textit{false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate} pada skenario \textit{workload} rendah, sedang, tinggi, dan sangat tinggi.  
+\end{enumerate}

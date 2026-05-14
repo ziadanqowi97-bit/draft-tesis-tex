@@ -69,8 +69,14 @@
 \DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 \DeclareDelimFormat{finalnamedelim}{\addspace dan\space}
 
-% Antar beberapa sitasi memakai "dan"
-\DeclareDelimFormat{multicitedelim}{\addspace dan\space}
+% Antar banyak sitasi:
+% 2 sitasi  -> A dan B
+% 3+ sitasi -> A, B dan C
+\DeclareDelimFormat{multicitedelim}{%
+  \ifnumless{\value{multicitecount}}{\value{multicitetotal}}
+    {\addcomma\space}
+    {\addspace dan\space}%
+}
 
 % Sitasi > 2 penulis menjadi dkk.
 \ExecuteBibliographyOptions{

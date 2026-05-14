@@ -1,3 +1,12 @@
 \section{Rumusan Masalah}
 
 Berdasarkan latar belakang yang telah diuraikan, penelitian ini merumuskan beberapa masalah utama sebagai berikut:
+
+\begin{enumerate}
+    \item Bagaimana merancang mekanisme ABAC berbasis \textit{edge} pada lingkungan IoT yang mampu menyediakan kontrol akses \textit{fine-grained} dan \textit{context-aware} secara efisien?
+    \item Bagaimana mekanisme \textit{cache} atribut lokal pada \textit{gateway edge} dapat mengurangi latensi dan \textit{PIP calls} tanpa mengubah semantik kebijakan ABAC?
+    \item Bagaimana menentukan konfigurasi \textit{cacheable attribute}, TTL per atribut, dan ukuran \textit{cache} yang optimal untuk menjaga keseimbangan antara efisiensi sistem dan \textit{attribute freshness}?
+    \item Bagaimana algoritma \textit{Grey Wolf Optimization} dapat digunakan untuk mengoptimalkan konfigurasi \textit{cache} atribut dan \textit{freshness} pada ABAC berbasis \textit{edge}?
+    \item Bagaimana kinerja mekanisme yang diusulkan dibandingkan dengan \textit{cloud-only ABAC, edge fresh ABAC, static cache, adaptive TTL}, dan \textit{random search}?
+    \item Bagaimana pengaruh mekanisme yang diusulkan terhadap kualitas keputusan otorisasi, khususnya \textit{false allow rate, false deny rate, stale cache hit rate,} dan \textit{revocation false allow rate} pada berbagai skenario dinamika \textit{workload}? 
+\end{enumerate}
