@@ -69,6 +69,17 @@
 \DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 \DeclareDelimFormat{finalnamedelim}{\addspace dan\space}
 
+% Antar beberapa sitasi memakai "dan"
+\DeclareDelimFormat{multicitedelim}{\addspace dan\space}
+
+% Sitasi > 2 penulis menjadi dkk.
+\ExecuteBibliographyOptions{
+  maxcitenames=2,
+  mincitenames=1,
+  uniquelist=false,
+  uniquename=false
+}
+
 % Tahun pakai kurung
 \renewbibmacro*{date+extradate}{%
   \printtext[parens]{%
@@ -77,6 +88,23 @@
 
 % Judul artikel tanpa kutip
 \DeclareFieldFormat[article]{title}{#1}
+
+% Format artikel jurnal: Penulis (Tahun) : Judul, Jurnal, Volume, Halaman.
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \space
+  \printtext[parens]{\printfield{year}}%
+  \space:\space
+  \printfield{title}%
+  \addcomma\space
+  \printfield{journaltitle}%
+  \addcomma\space
+  \printfield{volume}%
+  \addcomma\space
+  \printfield{pages}%
+  \addperiod
+  \finentry
+}
 
 % Nama jurnal italic
 \DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1}}
@@ -91,7 +119,7 @@
 \renewbibmacro{in:}{}
 
 % Style dari website
-\DeclareFieldFormat{rawurl}{\url{#1}}
+\DeclareFieldFormat{rawurl}{\href{#1}{#1}}
 
 \DeclareBibliographyDriver{online}{%
   \printfield{title}%
@@ -122,3 +150,23 @@
 \setlength{\bibhang}{1.5em}
 
 \addbibresource{references/reference.bib}
+
+% untuk conference prosiding
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}%
+  \space
+  \printtext[parens]{\printfield{year}}%
+  \space:\space
+  \printfield{title}%
+  \addcomma\space
+  \printfield{booktitle}%
+  \addcomma\space
+  \printfield{pages}%
+  \addperiod
+  \finentry
+}
+
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat[inproceedings]{booktitle}{\mkbibemph{#1}}
+\DeclareFieldFormat{pages}{#1}
