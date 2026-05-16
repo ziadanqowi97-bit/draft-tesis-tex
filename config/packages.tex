@@ -72,10 +72,12 @@
 % Antar banyak sitasi:
 % 2 sitasi  -> A dan B
 % 3+ sitasi -> A, B dan C
-\DeclareDelimFormat{multicitedelim}{%
-  \ifnumless{\value{multicitecount}}{\value{multicitetotal}}
-    {\addcomma\space}
-    {\addspace dan\space}%
+\renewcommand*{\multicitedelim}{%
+  \ifnum\numexpr\value{multicitecount}+1\relax=\value{multicitetotal}
+    \addspace dan\space
+  \else
+    \addcomma\space
+  \fi
 }
 
 % Sitasi > 2 penulis menjadi dkk.
