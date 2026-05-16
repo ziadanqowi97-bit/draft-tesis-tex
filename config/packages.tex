@@ -73,7 +73,7 @@
 % 2 sitasi  -> A dan B
 % 3+ sitasi -> A, B dan C
 \renewcommand*{\multicitedelim}{%
-  \ifnum\numexpr\value{multicitecount}+1\relax=\value{multicitetotal}
+  \ifnum\value{citecount}=\value{citetotal}
     \addspace dan\space
   \else
     \addcomma\space
