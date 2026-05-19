@@ -24,9 +24,30 @@
 % ==================================================
 \renewcommand{\contentsname}{DAFTAR ISI}
 \renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
 
 \renewcommand{\cftchapfont}{\bfseries}
 \renewcommand{\cftsecfont}{}
+
+% ==================================================
+% Caption Styles
+% ==================================================
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\figurename}{Gambar}
+
+\captionsetup[table]{
+  name=Tabel,
+  labelsep=space,
+  justification=centering,
+  singlelinecheck=true
+}
+
+\captionsetup[figure]{
+  name=Gambar,
+  labelsep=space,
+  justification=centering,
+  singlelinecheck=true
+}
 
 % ==================================================
 % Bibliography Heading

@@ -1,0 +1,133 @@
+\begin{landscape}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Perbandingan penelitian terkait ABAC, caching, dan optimasi pada IoT}
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{tabularx}{\linewidth}{|
+L{2.4cm}|
+L{2.1cm}|
+L{2.2cm}|
+L{1.2cm}|
+L{1.2cm}|
+L{2.4cm}|
+L{2.0cm}|
+L{2.8cm}|
+Y|}
+\hline
+\textbf{Penelitian} &
+\textbf{Kelompok} &
+\textbf{Domain} &
+\textbf{Edge/Fog} &
+\textbf{ABAC} &
+\textbf{Cache/Freshness} &
+\textbf{Optimasi} &
+\textbf{Metrik/Evaluasi} &
+\textbf{Keterbatasan} \\ \hline
+
+\textcite{diaz_authorization_2025}
+& ABAC/ authorization IoT
+& IoT authorization survey
+& Tidak utama
+& Ya
+& Terbatas
+& Tidak
+& Analisis komparatif model dan arsitektur otorisasi
+& Membahas authorization IoT dan kebutuhan \textit{fine-grained/context-aware}, tetapi freshness atribut belum menjadi fokus utama. \\ \hline
+
+\textcite{ullah_survey_2023}
+& ABAC untuk IoT
+& Blockchain-based ABAC for IoT
+& Tidak utama
+& Ya
+& Terbatas
+& Tidak
+& Security/privacy, latency, overhead, scalability
+& Fokus pada ABAC dan blockchain; belum membahas \textit{stale attribute} dan optimasi TTL/cache. \\ \hline
+
+\textcite{kalaria_adaptive_2024}
+& Edge/fog authorization
+& Fog-based context-aware access control
+& Ya
+& Ya
+& Tidak utama
+& Tidak
+& Processing time overhead, security improvement
+& Fog menurunkan latency dan cloud dependency, tetapi belum fokus pada \textit{stale attribute}/freshness atribut. \\ \hline
+
+\textcite{wang_edge-enabled_2025}
+& Edge-IAM; synchronization
+& Edge-enabled IAM IoT
+& Ya
+& Ya
+& Attribute freshness dan synchronization
+& Tidak
+& Freshness, source trustworthiness, decision reliability, overhead
+& Membahas freshness dan local authorization, tetapi belum mengoptimalkan TTL, cache size, dan cacheable attributes. \\ \hline
+
+\textcite{penuelas-angulo_revocation_2023}
+& Revocation berbasis atribut
+& ABE revocation for fog-enabled IoT
+& Ya
+& Tidak langsung
+& Revocation, bukan cache freshness
+& Tidak
+& User revocation, attribute revocation, cost comparison
+& Membahas revocation, tetapi belum mengaitkannya dengan optimasi TTL/cache atribut untuk edge ABAC. \\ \hline
+
+\textcite{weerasinghe_adaptive_2023}
+& Context caching
+& IoT context caching/CMP
+& Tidak utama
+& Tidak
+& Context freshness
+& Adaptive/RL-based caching
+& Cost efficiency, QoS/QoC, freshness, latency, hit rate
+& Fokus pada context/data caching, bukan cache atribut keamanan ABAC. \\ \hline
+
+\textcite{medvedev_refresh_2023}
+& IoT caching
+& IoT middleware/CMP caching
+& Tidak utama
+& Tidak
+& Freshness--latency--cost
+& Cost-based caching/prefetching
+& QoS, freshness, latency, operational cost
+& Membahas trade-off caching, tetapi bukan otorisasi ABAC. \\ \hline
+
+\textcite{alsadie_modified_2025}
+& Metaheuristik IoT
+& Fog-cloud task scheduling
+& Ya
+& Tidak
+& Tidak
+& Modified GWO
+& Makespan, energy consumption
+& GWO efektif untuk scheduling, tetapi belum diarahkan ke optimasi parameter ABAC. \\ \hline
+
+\textcite{alsamarai_improved_2024}
+& Metaheuristik IoT
+& Fog-cloud task scheduling
+& Ya
+& Tidak
+& Tidak
+& PC-GWO
+& Makespan, energy, resource utilization, cost
+& Optimasi performa/resource allocation, bukan security-aware ABAC. \\ \hline
+
+Penelitian ini
+& ABAC edge security-aware optimization
+& Edge IoT authorization
+& Ya
+& Ya
+& TTL per atribut, stale hit
+& Random Search, GA, GWO
+& FAR, FDR, stale hit, revocation FAR, latency, PIP calls
+& Simulasi terkontrol; belum diuji pada deployment fisik. \\ \hline
+
+\end{tabularx}
+\label{tab:related-work-abac-iot}
+\end{table}
+\end{landscape}

@@ -19,6 +19,13 @@
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{rotating}
+
+% Definisi custom column
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % Math
 \usepackage{amsmath, amssymb}
