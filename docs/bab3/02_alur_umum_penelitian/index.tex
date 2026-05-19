@@ -1,1 +1,40 @@
 \section{Alur Umum Penelitian}
+
+Secara umum, alur penelitian ini dapat digambarkan sebagai berikut:
+
+\vspace{0.5em}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{flowchart research.jpg}
+    \caption{Diagram alir alur umum penelitian}
+    \label{fig:flowchart-research}
+\end{figure}
+
+\vspace{-0.5em}
+
+Penelitian ini dilaksanakan melalui tahapan sistematis yang dimulai dari studi literatur hingga penarikan kesimpulan berdasarkan hasil eksperimen. Alur penelitian dirancang tidak hanya untuk menguji kinerja mekanisme ABAC berbasis \textit{edge}, tetapi juga untuk mengevaluasi kualitas keputusan otorisasi ketika sistem menggunakan mekanisme \textit{cache} atribut dan pengaturan \textit{freshness} melalui TTL. Oleh karena itu, tahapan penelitian ini mencakup proses perancangan model, pembangkitan \textit{workload} dinamis, pemisahan data \textit{training} dan \textit{testing}, optimasi konfigurasi, evaluasi keputusan akses, serta analisis \textit{trade-off} antara performa dan keamanan.
+
+Tahap pertama adalah studi literatur. Pada tahap ini dilakukan kajian terhadap konsep keamanan IoT, model kontrol akses, ABAC, \textit{edge/fog computing}, mekanisme \textit{cache} atribut, \textit{attribute freshness}, TTL, serta algoritma metaheuristik. Studi literatur digunakan untuk memahami perkembangan penelitian terdahulu dan menemukan keterbatasan pendekatan yang telah ada, khususnya terkait evaluasi ABAC berbasis \textit{edge} pada lingkungan IoT yang dinamis.
+
+Tahap kedua adalah identifikasi \textit{research gap}. Berdasarkan hasil studi literatur, ditemukan bahwa ABAC mampu mendukung kontrol akses yang \textit{fine-grained} dan \textit{context-aware}, tetapi implementasinya pada lingkungan IoT masih menghadapi tantangan berupa \textit{overhead} pengambilan atribut, latensi evaluasi, serta kebutuhan atribut yang mutakhir. Pemindahan evaluasi ABAC ke \textit{gateway edge} dapat mengurangi ketergantungan terhadap \textit{cloud}, tetapi penggunaan \textit{cache} atribut pada \textit{edge} dapat menimbulkan risiko \textit{stale attribute}. Kondisi tersebut dapat menyebabkan kesalahan keputusan akses, seperti \textit{false allow, false deny,} dan \textit{revocation false allow}.
+
+Tahap ketiga adalah perancangan model ABAC berbasis \textit{edge}. Pada tahap ini dirancang arsitektur sistem yang terdiri dari \textit{endpoint IoT, gateway edge, proxy}, dan \textit{cloud}. \textit{Endpoint} menghasilkan permintaan akses, sedangkan \textit{gateway edge} menjalankan proses evaluasi kebijakan ABAC. \textit{Gateway} juga dilengkapi \textit{cache} atribut lokal untuk mengurangi pengambilan atribut berulang dari PIP. Dalam rancangan ini, seluruh atribut tetap digunakan dalam evaluasi kebijakan ABAC. Dengan demikian, proses optimasi tidak mengubah semantik kebijakan akses, melainkan hanya mengoptimalkan strategi akuisisi atribut.
+
+Tahap keempat adalah perancangan mekanisme \textit{cache}, TTL dan \textit{threat scenario}. Mekanisme \textit{cache} digunakan untuk menyimpan atribut tertentu pada \textit{gateway edge} dalam batas waktu tertentu. TTL menentukan masa berlaku atribut di \textit{cache}. Apabila atribut masih valid, \textit{gateway} dapat menggunakan atribut dari \textit{cache}. Sebaliknya, apabila atribut tidak tersedia atau telah kedaluwarsa, \textit{gateway} mengambil atribut aktual dari PIP. Pada tahap ini juga dirancang skenario ancaman yang relevan, terutama \textit{stale atribut}, perubahan nilai atribut, pencabutan hak akses, dan ketidatersediaan PIP.
+
+Tahap kelima adalah pembangkitan beban kerja dinamis. Beban kerja dibangkitkan untuk merepresentasikan permintaan akses pada lingkungan IoT dengan tingkat dinamika yang berbeda. Penelitian ini menggunakan empat skenario, yaitu $LOW\_DYNAMIC$, $MEDIUM\_DYNAMIC$, $HIGH\_DYNAMIC$, dan $VERY\_DYNAMIC$. Setiap skenario mencerminkan variasi laju permintaan, perubahaan nilai \textit{trust}, perubahan \textit{anomaly score}, perubahan kondisi jaringan, perubahan status \textit{firmwware}, perubahan \textit{role}, peluang revokasi, dan kemungkinan lonjakan permintaan akses.
+
+Tahap keenam adalah pemisahan beban kerja menjadi data \textit{training} dan \textit{testing}. Data \textit{training} digunakan untuk proses pencarian konfigurasi oleh metode optimasi, sedangkan data \textit{testing} digunakan untuk mengevaluasi seluruh konfigurasi secara adil. Pemisahan ini dilakukan untuk mencegah \textit{data leakage}, yaitu kondisi ketika konfigurasi hasil optimasi diuji pada data yang sama dengan data yang digunakan saat proses optimasi.
+
+Tahap ketujuh adalah penentuan jenis konfigurasi eksperimen. Pada tahap ini terdapat percabangan antara konfigurasi non-optimasi dan konfigurasi berbasis optimasi. Konfigurasi non-optimasi meliputi \textit{cloud-only ABAC, edge-fresh ABAC, static cache ABAC}, dan \textit{adaptive TTL ABAC}. Konfigurasi ini digunakan sebagai \textit{baseline} untuk menilai pengaruh penempatan evaluasi, penggunaan \textit{cache}, dan pengaturan TTL manual. Sementara itu, konfigurasi berbasis optimasi meliputi \textit{random search} dan GWO. Pada jalur optimasi, metode optimasi mencari kombinasi atribut yang boleh di-\textit{cache}, nilai TTL per atribut, dan ukuran \textit{cache} lokal pada \textit{gateway}.
+
+Tahap kedelapan adalah evaluasi seluruh konfigurasi pada \textit{testing workload}. Setelah konfigurasi \textit{baseline} dan konfigurasi hasil optimasi diperoleh, seluruh metode diuji menggunakan data \textit{testing} yang sama. Evaluasi dilakukan untuk memastikan bahwa perbandingan antar metode berlangsung secara adil karena setiap konfigurasi menghadapi pola \textit{workload} dan perubahan atribut yang sama.
+
+Tahap kesembilan adalah perbandingan \textit{candidate decision} dengan \textit{oracle decision}. \textit{Oracle decision} merupakan keputusan ideal yang diperoleh berdasarkan atribut aktual atau \textit{ground truth}. Sementara itu, \textit{candidate decision} merupakan keputusan yang dihasilkan oleh konfigurasi yang sedang diuji, baik menggunakan atribut \textit{fresh} maupun atribut dari \textit{cache}. Perbandingan kedua keputusan tersebut digunakan untuk menentukan apakah terjadi \textit{false allow} atau \textit{false deny}.
+
+Tahap kesepuluh adalah penghitungan metrik evaluasi. Metrik yang digunakan mencakup metrik performa dan metrik keamanan. Metrik performa meliputi \textit{average latency, p95 latency}, jumlah \textit{PIP calls, cache hits, CPU time}, dan \textit{peak memory usage}. Metrik keamanan dan kualitas keputusan meliputi \textit{false allow rate, false deny rate, stale cache hit rate}, dan \textit{revocation false allow rate}. Penggunaan kedua kelompok metrik ini bertujuan agar evaluasi tidak hanya menilai kecepatan sistem, tetapi juga ketepatan keputusan otorisasi.
+
+Tahap kesebelas adalah analisis \textit{trade-off} antara performa dan keamanan. Pada tahap ini, hasil dari setiap konfigurasi dibandingkan untuk mengetahui sejauh mana \textit{cache} dan optimasi TTL mampu menurunkan latensi dan \textit{PIP calls} tanpa meningkatkan risiko keputusan akses yang salah. Konfigurasi dengan latensi paling rendah tidak selalu dianggap baik apabila menghasilkan \textit{false allow} atau \textit{revocation false allow} yang tinggi. Oleh karena itu, analisis dilakukan dengan menempatkan aspek keamanan sebagai pertimbangan utama, terutama pada lingkungan IoT yang dinamis.
+
+Tahap terakhir adalah penarikan kesimpulan. Kesimpulan disusun berdasarkan hasil evaluasi terhadap seluruh konfigurasi, hubungan hasil eksperimen dengan hipotesis penelitian, serta kemampuan pendekatan yang diusulkan dalam menyeimbangkan efisiensi, \textit{freshness} atribut, dan kualitas keputusan otorisasi.
