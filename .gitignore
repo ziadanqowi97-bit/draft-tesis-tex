@@ -12,3 +12,4 @@
 *.sync*
 *.toc
 ~$*.xlsx
+*.lof
