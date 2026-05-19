@@ -27,6 +27,13 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
+% =========================
+% Spacing gambar
+% =========================
+\setlength{\textfloatsep}{1em}
+\setlength{\abovecaptionskip}{0.5em}
+\setlength{\belowcaptionskip}{0.5em}
+
 % Math
 \usepackage{amsmath, amssymb}
 
@@ -185,3 +192,9 @@
 \DeclareFieldFormat[inproceedings]{title}{#1}
 \DeclareFieldFormat[inproceedings]{booktitle}{\mkbibemph{#1}}
 \DeclareFieldFormat{pages}{#1}
+
+% Caption rata kiri
+\captionsetup{
+    justification=raggedright,
+    singlelinecheck=false
+}

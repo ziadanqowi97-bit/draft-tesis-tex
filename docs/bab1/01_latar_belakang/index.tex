@@ -1,7 +1,17 @@
 \section{Latar Belakang}
-\setlength{\parskip}{1em}
 
 Dalam beberapa tahun terakhir, \textit{Internet of Things} (IoT) telah berkembang dari sekadar konsep konektivitas antar perangkat menjadi infrastruktur digital berskala sangat besar yang menghubungkan sensor, aktuator, dan aplikasi untuk mendukung otomasi serta pengambilan keputusan di berbagai sektor. Sebuah laporan menunjukkan bahwa pertumbuhan jumlah perangkat IoT pada tahun 2024 telah mencapai hingga 18,6 miliar dan diperkirakan melonjak hingga angka 39 miliar perangkat pada tahun 2030 \parencite{sinha2025iot}. Di level aplikasi, sebuah penelitian menunjukkan bahwa IoT telah memperluas fungsi \textit{smart home} dari \textit{monitoring} dasar ke layanan yang lebih berpusat pada kualitas hidup seperti keamanan, penghematan energi, dan dukungan kesehatan \parencite{info:doi/10.2196/62793}. Sementara pada sektor industri, \textit{Industrial Internet of Things} (IIoT) berperan nyata dalam meningkatkan efisiensi operasional, kualitas pengambilan keputusan, optimasi biaya, dan keselamatan kerja \parencite{AFRIN2025104317}. Dengan perluasan skala dan dampak lintas domain tersebut, IoT kini bukan lagi teknologi pelengkap, melainkan fondasi transformasi digital yang semakin kritikal bagi kehidupan sehari-hari maupun operasi organisasi modern.
+
+\vspace{0.5em}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Number-of-connected-IoT-devices-October-2025-vf-vw-980x515.png}
+    \caption{Prakiraan pasar IoT global dalam miliaran perangkat IoT yang terhubung \parencite{sinha2025iot}}
+    \label{fig:number-of-connected-iot}
+\end{figure}
+
+\vspace{-0.5em}
 
 Seiring dengan semakin masif dan heterogennya ekosistem IoT, mekanisme kontrol akses yang digunakan tidak lagi cukup apabila hanya bersifat statis, \textit{coarse-grained}, atau bergantung pada identitas semata, karena perangkat, pengguna, layanan, dan kondisi lingkungan terus berubah secara dinamis. Survei terbaru mengenai model otorisasi pada IoT menegaskan bahwa kebutuhan utama kontrol akses modern mencakup \textit{fine-grained authorization} dan kemampuan \textit{context-aware} untuk mempertimbangkan atribut subjek, objek, aksi, dan lingkungan, serta skalabilitas agar kebijakan tetap dapat diterapkan secara konsisten pada sistem dengan jumlah perangkat dan interaksi yang sangat besar \parencite{diaz_authorization_2025,ragothaman_access_2023}. Kebutuhan tersebut menjadi semakin penting pada lingkungan \textit{edge/fog}, karena keputusan akses sering kali harus dibuat dekat dengan sumber data dan dalam waktu yang cepat, sehingga model kontrol akses dituntut tidak hanya akurat dalam kebijakan, tetapi juga mampu beradaptasi terhadap perubahan konteks dan perilaku akses secara \textit{real-time}. Hal ini juga tercermin dalam penelitian tentang \textit{adaptive context-aware access control} pada IoT yang menunjukkan bahwa pengambilan keputusan berbasis konteks diperlukan untuk mencegah akses tidak sah pada lingkungan yang sangat dinamis dan terdistribusi \parencite{kalaria_adaptive_2024}.
 
